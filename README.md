@@ -1,2 +1,2 @@
-# graphana_octopus
-Graphana deployment for octopus streams
+# Grafana_octopus
+Grafana deployment for octopus streams
