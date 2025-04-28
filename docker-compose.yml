@@ -17,7 +17,7 @@ services:
     volumes:
       - "./grafana-data:/var/lib/grafana"
 
-  influxdb2:
+  ls :
     image: influxdb:latest
     container_name: influxdb2
     restart: always
