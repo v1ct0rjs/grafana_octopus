@@ -36,8 +36,8 @@ services:
     image: telegraf:latest
     container_name: telegraf
     restart: always
-    hostname: "moria"
-    user: 1001:984
+    hostname: "fedora" # name of the host that run container
+    user: 1001:984 # Permission issue with telegraf host_userid:docker_gid
     depends_on:
       - influxdb2
     networks:
