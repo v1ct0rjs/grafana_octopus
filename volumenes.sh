@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mkdir grafana-data
 
 sudo chmod -R 777 grafana-data
