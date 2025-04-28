@@ -1,0 +1,60 @@
+services:
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: always
+    user: "1001"
+    depends_on:
+      - influxdb2
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+    networks:
+      monitor:
+        ipv4_address: 172.28.0.3
+    volumes:
+      - "./grafana-data:/var/lib/grafana"
+
+  influxdb2:
+    image: influxdb:latest
+    container_name: influxdb2
+    restart: always
+    ports:
+      - 8086:8086
+      - 8089:8089/udp
+    env_file:
+      - .env
+    networks:
+      monitor:
+        ipv4_address: 172.28.0.4
+    volumes:
+      - "./influxdb2-data:/var/lib/influxdb2"
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    restart: always
+    hostname: "moria"
+    user: 1001:984
+    depends_on:
+      - influxdb2
+    networks:
+      monitor:
+        ipv4_address: 172.28.0.5
+    env_file:
+      - 'config/env.telegraf'
+    volumes:
+      - /:/hostfs:ro
+      - ./config/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+networks:
+  monitor:
+    name: monitoring
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
