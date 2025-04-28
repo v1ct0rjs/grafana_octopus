@@ -2,3 +2,6 @@
 grafana-dat/*
 influxdb-dat/*
 .idea/
+node_modules/
+*.log
+*.tmp
