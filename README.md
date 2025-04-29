@@ -132,7 +132,7 @@ Dentro de Docker Compose, esto se logra mediante variables como `DOCKER_INFLUXDB
 
 **Acceso a InfluxDB:** InfluxDB expone una interfaz HTTP (API y UI web) en el puerto `8086`. En este stack, ese puerto está mapeado al host, por lo que puedes acceder a la interfaz web de InfluxDB 2 si la necesitas, visitando `http://<host>:8086` en un navegador. Allí podrías usar la GUI de InfluxDB para explorar datos o administrar tokens/usuarios. Las credenciales de acceso serán el usuario y password definidos (o directamente el token). *Nota:* La interfaz web de InfluxDB no es necesaria para el funcionamiento normal del stack (ya que Grafana se encarga de la visualización), pero está disponible. Por seguridad, si este servicio se despliega en un servidor remoto, considera restringir el acceso a este puerto (por firewall o configurando Docker Compose para que solo escuche en localhost) si no planeas usar la UI de InfluxDB.
 
-## Configuración de Grafana 🖥️
+## Configuración de Grafana
 
 Grafana es el componente de visualización. En el stack se configura con la imagen oficial de Grafana (versión open source; opcionalmente podrías usar la Enterprise si lo necesitas). La configuración principal de Grafana en este contexto es sencilla:
 
