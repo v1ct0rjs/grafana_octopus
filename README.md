@@ -6,6 +6,9 @@ Este proyecto despliega un **stack de monitoreo** completo utilizando **Grafana*
 
 Grafana ofrece la interfaz web para visualizar las métricas en forma de *dashboards* interactivos. InfluxDB 2 actúa como base de datos de series temporales donde se almacenan los datos de monitoreo. Telegraf funciona como agente de recolección de métricas, obteniendo datos del sistema operativo (host) y de Docker, y enviándolos a InfluxDB. Todo el stack se orquesta con Docker Compose para facilitar su despliegue y gestión.
 
+
+![dashboar_working](https://github.com/v1ct0rjs/grafana_octopus/blob/main/Captura%20de%20pantalla_20250429_140942.png)
+
 **Características principales:**
 
 - Monitoreo de recursos del sistema (CPU, RAM, disco, red, procesos) y de contenedores Docker en tiempo real.
